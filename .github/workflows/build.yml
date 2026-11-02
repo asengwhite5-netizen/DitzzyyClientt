@@ -7,6 +7,16 @@ jobs:
       - uses: actions/checkout@v4
       - name: Unzip source
         run: unzip -q DitzzyyClientt.zip
+      - name: Fix ChestEspRender
+        run: |
+          cat > DitzzyyClient/src/main/java/com/ditzzyy/client/ChestEspRender.java << 'EOF'
+          package com.ditzzyy.client;
+
+          public class ChestEspRender {
+              public static void register() {
+              }
+          }
+          EOF
       - uses: actions/setup-java@v4
         with:
           distribution: temurin
